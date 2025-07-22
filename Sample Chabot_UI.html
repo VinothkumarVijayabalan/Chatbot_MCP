@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prudential Insurance Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .chat-popup {
+      display: none;
+    }
+
+    .chat-popup.open {
+      display: block;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-blue-800 text-white p-4 flex justify-between items-center shadow-md">
+    <div class="flex items-center space-x-3">
+      <div class="text-3xl">🏛️</div>
+      <div>
+        <h1 class="text-2xl font-bold">Prudential Insurance Company</h1>
+        <p class="text-sm">Your trusted partner for life and beyond</p>
+      </div>
+    </div>
+    <div class="bg-white text-blue-800 rounded px-4 py-2 shadow text-sm font-bold animate-pulse">
+      📈 PRU: $94.20 ▲ +0.85%
+    </div>
+  </header>
+
+  <!-- Content Grid -->
+  <main class="p-6 grid md:grid-cols-2 gap-6">
+    <!-- My Actions -->
+    <section class="bg-white shadow-lg rounded-xl p-6">
+      <h2 class="text-xl font-semibold mb-4">🚀 My Actions</h2>
+      <ul class="space-y-3">
+        <li>📄 View My Policy</li>
+        <li>📞 Update Contact Info</li>
+        <li>💳 Download E-Card</li>
+        <li>🆘 Request Assistance</li>
+      </ul>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="bg-white shadow-lg rounded-xl p-6">
+      <h2 class="text-xl font-semibold mb-4">🔗 Quick Links</h2>
+      <ul class="space-y-3">
+        <li><a href="#" class="text-blue-600 hover:underline">📑 Claim a Policy</a></li>
+        <li><a href="#" class="text-blue-600 hover:underline">📊 Get a Quote</a></li>
+        <li><a href="#" class="text-blue-600 hover:underline">📬 Contact Support</a></li>
+        <li><a href="#" class="text-blue-600 hover:underline">❓ FAQs</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Chatbot Button -->
+  <div class="fixed bottom-4 right-4 z-50">
+    <button onclick="toggleChat()" class="bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 text-xl">
+      💬
+    </button>
+  </div>
+
+  <!-- Chat Popup -->
+  <div id="chatPopup" class="chat-popup fixed bottom-24 right-4 bg-white shadow-lg rounded-xl w-96 p-4 z-50">
+    <h2 class="text-lg font-bold mb-2">Hi Vinoth 👋</h2>
+    <p class="mb-4">Which option would you like to proceed with?</p>
+
+    <div class="space-y-4">
+      <!-- Claim Status -->
+      <div>
+        <button onclick="toggleFAQ('faq1')" class="w-full bg-gray-100 hover:bg-gray-200 p-2 rounded">📁 Claim Status</button>
+        <div id="faq1" class="hidden mt-2 space-y-2">
+          <button onclick="showAnswer('a1')" class="block w-full text-left text-blue-600">📍 Where is my claim?</button>
+          <div id="a1" class="hidden bg-blue-50 p-2 rounded">Your claim is under process. Expected resolution: 3 working days.</div>
+
+          <button onclick="showAnswer('a2')" class="block w-full text-left text-blue-600">🔎 How to check claim?</button>
+          <div id="a2" class="hidden bg-blue-50 p-2 rounded">You can track your claim via the mobile app or web dashboard.</div>
+        </div>
+      </div>
+
+      <!-- Policy Quote -->
+      <div>
+        <button onclick="toggleFAQ('faq2')" class="w-full bg-gray-100 hover:bg-gray-200 p-2 rounded">🧾 Policy Quote</button>
+        <div id="faq2" class="hidden mt-2 space-y-2">
+          <button onclick="showAnswer('a3')" class="block w-full text-left text-blue-600">📈 Get a policy quote</button>
+          <div id="a3" class="hidden bg-blue-50 p-2 rounded">Sure! Please provide your age and coverage amount.</div>
+        </div>
+      </div>
+
+      <!-- Submit Incident -->
+      <div>
+        <button onclick="toggleFAQ('faq3')" class="w-full bg-gray-100 hover:bg-gray-200 p-2 rounded">📣 Submit Incident</button>
+        <div id="faq3" class="hidden mt-2 space-y-2">
+          <button onclick="showAnswer('a4')" class="block w-full text-left text-blue-600">📝 How to report accident?</button>
+          <div id="a4" class="hidden bg-blue-50 p-2 rounded">Please fill out the form in your dashboard or call our support.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function toggleChat() {
+      document.getElementById('chatPopup').classList.toggle('open');
+    }
+
+    function toggleFAQ(faqId) {
+      document.querySelectorAll(`#${faqId} button + div`).forEach(div => div.classList.add('hidden'));
+      document.getElementById(faqId).classList.toggle('hidden');
+    }
+
+    function showAnswer(answerId) {
+      document.getElementById(answerId).classList.toggle('hidden');
+    }
+  </script>
+</body>
+
+</html>
